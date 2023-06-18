@@ -1,26 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import MailIcon from '@mui/icons-material/Mail';
+import MenuIcon from '@mui/icons-material/Menu';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import { useState } from 'react';
+import NotesIcon from '@mui/icons-material/Notes';
+import { BasicForm, Layout } from './Component';
+import HomeIcon from '@mui/icons-material/Home';
+import { RouterProvider, createBrowserRouter, useNavigate } from 'react-router-dom';
+
+
 
 function App() {
+
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Layout/>,
+      children: [
+        {
+          path: "/",
+          element: <h1>Dashboard</h1>,
+        },
+        {
+          path: "/basic-form",
+          element: <BasicForm/>,
+        }
+
+      ]
+    }
+  ]);
+
+ 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RouterProvider router={router} />
   );
 }
+
 
 export default App;
